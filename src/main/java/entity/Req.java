@@ -26,6 +26,7 @@ public class Req {
         this.feature = feature;
     }
 
-    public Req() {
+    public Req(Feature feature) {
+        this.feature = feature;
     }
 }

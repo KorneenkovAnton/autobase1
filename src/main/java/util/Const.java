@@ -4,6 +4,7 @@ package util;
 public interface Const {
 
     String USER_ATTR = "user";
+    String USERS_ATTR = "users";
     String CAR_ID = "car_id";
     String FLIGHT_ID = "flight_id";
     String MAIN_DIR = "/main";
@@ -35,5 +36,7 @@ public interface Const {
     String GET_BY_LOGIN_AND_PASSWORD = "SELECT * FROM usr WHERE login = ? AND password = ?";
     String GET_BY_ID = "SELECT * FROM usr WHERE id=?";
     String DELETE_USER = "DELETE FROM usr WHERE id = ?";
+    String ADD_NEW_REQUEST = "INSERT INTO request(feature) values(?)";
+    String GET_USERS = "SELECT * FROM usr WHERE role = 'DRIVER'";
 
 }

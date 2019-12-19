@@ -12,7 +12,9 @@ import java.util.List;
 public class FlightDAO extends AbstractDAO<Flight>implements Const {
     @Override
     public void add(Flight flight) throws SQLException {
-
+        PreparedStatement preparedStatement = getPreparedStatement("INSERT INTO flight(req_id) values(?)");
+        preparedStatement.setInt(1,flight.getReq().getId());
+        preparedStatement.execute();
     }
 
     @Override

@@ -3,6 +3,7 @@ package action;
 import DAO.AbstractDAO;
 import DAO.CarDAO;
 import DAO.FlightDAO;
+import DAO.UserDAO;
 import entity.Car;
 import entity.Flight;
 import entity.User;
@@ -20,18 +21,22 @@ public class MainPageAction implements Action, Const {
         String answer = null;
         List<Car> cars;
         List<Flight> flights;
+        List<User> users;
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute(USER_ATTR);
         AbstractDAO<Car> carDAO = new CarDAO();
         AbstractDAO<Flight> flightDAO = new FlightDAO();
+        AbstractDAO<User> userDAO = new UserDAO();
 
         try {
             switch (user.getRole()){
                 case ADMIN:{
                     flights = flightDAO.getAll();
                     cars = carDAO.getAll();
+                    users = userDAO.getAll();
                     session.setAttribute(CARS_ATTR,cars);
                     session.setAttribute(FLIGHTS_ATTR,flights);
+                    session.setAttribute(USERS_ATTR,users);
 
                     answer = MAIN_ADMIN_JSP;
                     break;
@@ -52,6 +57,7 @@ public class MainPageAction implements Action, Const {
         }finally {
             carDAO.returnConnectionInPool();
             flightDAO.returnConnectionInPool();
+            userDAO.returnConnectionInPool();
         }
 
         return answer;

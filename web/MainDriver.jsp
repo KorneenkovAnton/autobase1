@@ -15,6 +15,5 @@
         <a href="DriverFlights.jsp">My flights</a>
     </div>
 </div>
-
 </body>
 </html>

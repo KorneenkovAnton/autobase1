@@ -7,6 +7,10 @@ public class Flight {
     private Car car;
     private boolean mark;
 
+    public Flight(Req req) {
+        this.req = req;
+    }
+
     public int getId() {
         return id;
     }

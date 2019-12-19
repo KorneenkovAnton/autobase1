@@ -15,6 +15,8 @@ public class ActionFactory {
         actionMap.put("/markFlight",new MarkFLightAction());
         actionMap.put("/markCarState",new MarkStateAction());
         actionMap.put("/logout", new LogoutAction());
+        actionMap.put("/newReq",new NewReqAction());
+        actionMap.put("/addCar",new AddCarAction());
     }
 
     public synchronized Action getAction(HttpServletRequest request){

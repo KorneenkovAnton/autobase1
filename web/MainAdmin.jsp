@@ -11,22 +11,8 @@
 </form>
 <div class="login-page">
     <div class="form">
-        <c:forEach var="flight" items="${flights}">
-                    <form action="/appoint">
-                        <p>Flight №${flight.id}</p>
-                        <p>Feature:${flight.req.feature}</p>
-                        <p><select name="car_id" required>
-                            <option value="${flight.car.id}">${flight.car.id} ${car.feature}</option>
-                            <c:forEach var="car" items="${cars}">
-                                <c:if test="${car.id != flight.car.id}">
-                                    <option value="${car.id}">${car.id} ${car.feature}</option>
-                                </c:if>
-                            </c:forEach>
-                        </select></P>
-                        <input type="hidden" value="${flight.id}" name="flight_id">
-                        <input type="submit" value="Назначить">
-                    </form>
-        </c:forEach>
+        <a href="AdminFlights.jsp">Flights</a>
+        <a href="AdminAddCars.jsp">Add Car</a>
     </div>
 </div>
 </body>

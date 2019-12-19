@@ -9,6 +9,7 @@ import util.Const;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserDAO extends AbstractDAO<User> implements Const{
@@ -94,6 +95,18 @@ public class UserDAO extends AbstractDAO<User> implements Const{
 
     @Override
     public List<User> getAll() throws SQLException {
-        return null;
+        List<User> users = new ArrayList<>();
+        PreparedStatement preparedStatement = getPreparedStatement(GET_USERS);
+
+        try {
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()){
+                users.add(new User(resultSet.getInt(ID),Role.DRIVER,resultSet.getString(LOGIN),null));
+            }
+        }finally {
+            closePreparedStatement(preparedStatement);
+        }
+        return users;
     }
 }

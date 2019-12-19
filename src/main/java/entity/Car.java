@@ -7,6 +7,11 @@ public class Car {
     private User user;
     private Feature feature;
 
+    public Car(Feature feature, User user) {
+        this.feature = feature;
+        this.user = user;
+    }
+
     public int getId() {
         return id;
     }

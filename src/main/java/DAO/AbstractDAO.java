@@ -45,6 +45,16 @@ public abstract class AbstractDAO<T> implements DAO<T> {
         return preparedStatement;
     }
 
+    public PreparedStatement getPreparedStatement(String sql,int config){
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = connection.prepareStatement(sql,config);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return preparedStatement;
+    }
+
     public void closePreparedStatement(PreparedStatement preparedStatement){
         if(preparedStatement != null){
             try {

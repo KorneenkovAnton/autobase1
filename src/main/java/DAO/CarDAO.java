@@ -12,7 +12,16 @@ import java.util.List;
 public class CarDAO extends AbstractDAO<Car> implements Const {
     @Override
     public void add(Car car) throws SQLException {
+        PreparedStatement preparedStatement = getPreparedStatement("INSERT INTO car(state,driver_id,feature) VALUES(?,?,?)");
 
+        try {
+            preparedStatement.setString(1,CarState.GOOD.toString());
+            preparedStatement.setInt(2,car.getUser().getId());
+            preparedStatement.setString(3,car.getFeature().toString());
+            preparedStatement.execute();
+        }finally {
+            closePreparedStatement(preparedStatement);
+        }
     }
 
     @Override
